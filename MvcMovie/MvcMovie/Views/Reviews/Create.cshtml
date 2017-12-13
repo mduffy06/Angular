@@ -1,0 +1,34 @@
+﻿@model MvcMovie.Models.Review
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h4>Write a review for</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Reviewer" class="control-label"></label>
+                <input asp-for="Reviewer" class="form-control" />
+                <span asp-validation-for="Reviewer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="Comment">Comment</label>
+                <textarea class="form-control" data-val="true" data-val-required="Comment can't be empty" id="Comment" name="Comment"></textarea>
+                <span class="text-danger field-validation-valid" data-valmsg-for="Comment" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+                <a class="btn btn-default" href="/Movies/Index">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
